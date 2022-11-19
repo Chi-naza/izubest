@@ -1,0 +1,51 @@
+.bodySpace{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bodySpace form{
+    margin-top: 20rem;             
+    margin-bottom: 10rem;              
+}
+
+.bodySpace h2{
+    margin-top: 20rem;             
+    margin-bottom: 10rem;  
+    color: green;            
+}
+
+
+.regTextDiv{
+    margin-top: 7px;
+}
+
+.regTextDiv a{
+    color: green;
+    font-style: italics;
+    transition: 1s;
+}
+
+.regTextDiv a:hover{
+    color: rgb(156, 42, 42);
+    padding: 1px;
+}
+
+.register-body{
+    padding: 10px;
+}
+
+.flashAlert-success{
+    width:90%;
+    margin:20px auto;
+    padding:20px;
+    position:relative;
+    border-radius:5px;
+    box-shadow:0 0 15px 5px #ccc;
+    background-color: #a8f0c6;
+    text-align: center;
+}
+
+#messageInput{
+    height: 80px;
+}

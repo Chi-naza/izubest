@@ -1,0 +1,23 @@
+
+
+.profile-image{
+    height: 3.5rem;
+    width: 3.5rem;
+    padding-right: 10px;
+}
+
+.div-margin-top{
+    margin-top: 10%;
+}
+
+.delete-btn{
+    color: red;
+}
+
+#project-btns{
+    margin-top: 1rem;
+}
+
+#project-btns a{
+    padding: 5px;
+}

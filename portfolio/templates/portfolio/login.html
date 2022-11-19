@@ -1,0 +1,25 @@
+{% extends 'portfolio/base.html' %}
+
+{% load crispy_forms_tags %} 
+
+
+
+{% block title %} Login {% endblock %}
+
+{% block body %}
+    <div class="bodySpace">
+        <div class="register-body">
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                
+                {{form|crispy}}
+                
+                <input type="submit" value="login">
+                <input type="hidden" name="next" value="{{ next }}">
+                <div class="regTextDiv">
+                    <a href="{% url 'register' %}">Register Here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

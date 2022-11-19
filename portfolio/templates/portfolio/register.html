@@ -1,0 +1,36 @@
+{% extends 'portfolio/base.html' %}
+
+{% load crispy_forms_tags %} 
+
+
+
+{% block title %} Register {% endblock %}
+
+{% block body %}
+    <div class="bodySpace">
+        <div class="register-body">
+            <form method="post" action="{% url 'register' %}">
+                {% csrf_token %}
+               
+                {% for field in form %}
+                <p>
+                    {{ field.label_tag }}<br>
+                    {{ field }}
+                    {% if field.help_text %}
+                    <small style="color: grey">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                </p>
+                {% endfor %} 
+                <br>           
+                <input type="submit" value="Sign Up">
+                <input type="hidden" name="next" value="{{ next }}">
+                <div class="regTextDiv">
+                    <a href="{% url 'login' %}">Login Here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

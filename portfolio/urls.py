@@ -1,0 +1,40 @@
+from django.urls import path
+from django.contrib.auth import views as auth_views
+from portfolio.views import (
+    Index, 
+    Dashboard, 
+    MessagesView, 
+    SkillsView, 
+    ProfileView, 
+    ProjectsView, 
+    Register, 
+    sendMessage, 
+    DeleteMessage,
+    CreateSkillView,
+    UpdateSkillsView,
+    DeleteSkills,
+    CreateProjectsView,
+    UpdateProjectsView,
+    DeleteProjectView,
+    UpdateProfileView
+)
+urlpatterns = [
+    path('', Index.as_view(), name= 'index_page'),
+    path('engine/', Dashboard.as_view(), name= 'dashboard'),
+    path('messages/', MessagesView.as_view(), name= 'messages_page'),
+    path('my-skills/', SkillsView.as_view(), name= 'skills_page'),
+    path('add/more/skills/', CreateSkillView.as_view(), name="create_skill"),
+    path('update/skill/<pk>/', UpdateSkillsView.as_view(), name="update_skill"),
+    path('delete/skill/<pk>/', DeleteSkills.as_view(), name="delete_skill"),
+    path('profile/', ProfileView.as_view(), name= 'profile_page'),
+    path('update/profile/<pk>/', UpdateProfileView.as_view(), name= 'update_profile'),
+    path('my-projects/', ProjectsView.as_view(), name= 'projects_page'),
+    path('add/more/projects/', CreateProjectsView.as_view(), name= 'create_project'),
+    path('update/project/<pk>/', UpdateProjectsView.as_view(), name= 'update_project'),
+    path('delete/project/<pk>/', DeleteProjectView.as_view(), name= 'delete_project'),
+    path('register/', Register.as_view(), name= 'register'),
+    path('send/message/', sendMessage, name= 'send-message'),
+    path('delete-message/<pk>/', DeleteMessage.as_view(), name='delete-message'),
+    path('accounts/login/', auth_views.LoginView.as_view(template_name='portfolio/login.html'), name='login'),
+    path('loggedout/izuu/', auth_views.LogoutView.as_view(template_name='portfolio/logout.html'), name='logout'),
+]

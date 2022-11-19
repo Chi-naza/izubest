@@ -1,0 +1,130 @@
+{% extends 'portfolio/base.html' %}
+
+
+
+{% block title %} Bio {% endblock %}
+
+
+{% block indexActive %}active{% endblock %}
+
+
+{% block nav %} 
+    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+    <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
+    <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
+    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+    <li class="nav__item"><a href="{{ profile.cv.url }}"  download class="cv">Download CV</a></li>
+{% endblock %}
+
+
+
+{% block body %}
+
+    <main class="l-main">
+
+        <!--===== HOME =====-->
+        <section class="home home-grid" id="home">
+            <div class="home__data">
+                <h1 class="home__title">Hello,<br>I'm <span class="home__title-color">Izubest</span><br>A Seasoned Artisan</h1>
+
+                <a href="#contact" class="button">Contact</a>
+            </div>              
+        </section>
+
+        <div class="social_icons">
+            <a href="" class="home__social-icon insta"><i class='bx bxl-linkedin'></i></a>
+            <a href="" class="home__social-icon faceb"><i class='bx bxl-facebook' ></i></a>
+            <a href="" class="home__social-icon twit"><i class='bx bxl-twitter' ></i></a>
+            <a href="" class="home__social-icon wsapp"><i class='bx bxl-whatsapp' ></i></a>
+        </div>
+
+
+        <!--===== ABOUT =====-->
+        <section class="about section " id="about">
+            <h2 class="section-title">About</h2>
+
+            <div class="about__container bd-grid">
+                <div class="about__img">
+                    <img src="{{ profile.about_image.url }}" alt="">
+                </div>
+                
+                <div>
+                    <h2 class="about__subtitle">You can call me Izubest</h2>
+                    <p class="about__text">{{ profile.personal_info }}</p>           
+                </div>                                   
+            </div>
+        </section>
+
+
+
+        <!--===== SKILLS =====-->
+        <section class="skills section" id="skills">
+            <h2 class="section-title">Skills</h2>
+
+            <div class="skills__container bd-grid">                          
+                <div>
+                    <h2 class="skills__subtitle">What I can do:</h2>
+                    <p class="skills__text">Below are the various skills that I currently possess. Check them out carefully to see what I can do</p>
+                    
+                    {% for s in skills %}
+                    <div class="skills__data">
+                        <div class="skills__names">
+                            <h2>{{ forloop.counter }}.</h2>
+                            <i class=' skills__icon'></i>
+                            <span class="skills__name">{{ s.name }}</span>
+                        </div>
+                        <div class="skills__bar skills__rating" style="--percentage: {{ s.level }}%"> </div>
+                        <div>
+                            <span class="skills__percentage">{{ s.level }}%</span>
+                        </div>
+                    </div>                
+                    {% endfor %}
+                    
+                </div>
+                
+                <div>              
+                    <img src="{{ profile.skill_image.url }}" alt="" class="skills__img">
+                </div>
+            </div>
+        </section>
+
+
+
+        <!--===== WORK =====-->
+        <section class="work section" id="work">
+            <h2 class="section-title">Work</h2>
+
+            <div class="work__container bd-grid">
+                {% for p in projects %}
+                    <div class="work__img">
+                        <img src="{{ p.image.url }}" alt="">
+                        <div class="work__description">
+                            <h1>{{ p.description|truncatewords:24 }}</h1>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </section>
+
+        <!--===== CONTACT =====-->
+        <section class="contact section" id="contact">
+            <h2 class="section-title">Contact Me</h2>
+
+            <div class="contact__container bd-grid">
+                <form method="post" action="{% url 'send-message' %}" class="contact__form">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Name" name="name" class="contact__input" required>
+                    <input type="email" placeholder="Email" name="email" class="contact__input" required>
+                    <input type="phone" placeholder="Phone Number" name="phone" class="contact__input" required>
+                    <textarea id="" cols="0" placeholder="Your Message Here" rows="10" name="msg" class="contact__input" required></textarea>
+                    <input type="hidden" name="next" value="{{ next }}">
+                    <input type="submit" value="Send" class="contact__button button">
+                </form>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}
+
+      

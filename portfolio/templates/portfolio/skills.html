@@ -1,0 +1,63 @@
+{% extends 'portfolio/dashboard_base.html' %}
+
+
+
+
+{% block skillsActive %}active{% endblock %}
+
+
+
+{% block content %} 
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+            
+            <div class="row g-3 mb-4 align-items-center justify-content-between">
+                <div class="col-auto">
+                    <h1 class="app-page-title mb-0">My Skills & Talents</h1>
+                </div>
+                <div class="col-auto">
+                    <div class="page-utilities">
+                        <div class="row g-2 justify-content-start justify-content-md-end align-items-center">						 
+
+                            <div class="col-auto">
+                                <a class="btn app-btn-primary" href="{% url 'create_skill' %}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-upload me-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                <path fill-rule="evenodd" d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
+                                </svg>Add More Skills</a>
+                            </div>
+
+                        </div><!--//row-->
+                    </div><!--//table-utilities-->
+                </div><!--//col-auto-->
+            </div><!--//row-->
+            
+            <div class="app-card app-card-orders-table shadow-sm mb-5">
+                <div class="app-card-body">
+                    <div class="table-responsive">
+                        <table class="table app-table-hover mb-0 text-left">
+                            <thead>
+                                <tr>
+                                    <th class="cell">Skill Name/Title</th>
+                                    <th class="cell">Level of Mastery (%)</th>																																												
+                                    <th class="cell"></th>																				
+                                    <th class="cell"></th>																				
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for s in skills %}
+                                <tr>
+                                    <td class="cell"> {{ s.name }} </td>											
+                                    <td class="cell"> {{ s.level }} </td>																																		
+                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="{% url 'update_skill' s.id %}">Update</a></td>																							
+                                    <td class="cell"><a class="btn-sm app-btn-secondary delete-btn" href="{% url 'delete_skill' s.id %}">Delete</a></td>																							
+                                </tr>	
+                                {% endfor %}						
+                            </tbody>
+                        </table>
+                    </div><!--//table-responsive-->
+                </div><!--//app-card-body-->		
+            </div><!--//app-card-->					
+
+        </div><!--//container-fluid-->
+    </div><!--//app-content-->
+{% endblock %}

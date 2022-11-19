@@ -1,0 +1,18 @@
+{% extends 'portfolio/dashboard_base.html' %}
+
+
+{% load crispy_forms_tags %} 
+
+
+{% block content %} 
+
+<div class="app-content pt-3 p-md-3 p-lg-4" style="padding: 10px;">
+    <form method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{ object.name }}'s message"?</p>
+        {{ form|crispy }}
+        <input type="submit" value="Confirm">
+    </form>
+</div>
+
+{% endblock %}

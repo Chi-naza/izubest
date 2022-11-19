@@ -1,0 +1,53 @@
+{% extends 'portfolio/dashboard_base.html' %}
+
+
+{% block profileActive %}active{% endblock %}
+
+
+{% block content %} 
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+            
+            <div class="row g-3 mb-4 align-items-center justify-content-between">
+                <div class="col-auto">
+                    <h1 class="app-page-title mb-0">Profile Details</h1>
+                </div>
+                
+            </div><!--//row-->   
+            
+            <div class="app-card app-card-orders-table shadow-sm mb-5">
+                <div class="app-card-body">
+                    <div class="table-responsive">
+                        <table class="table app-table-hover mb-0 text-left">
+                            <thead>
+                                <tr>
+                                    <th class="cell">Name</th>
+                                    <th class="cell">About</th>
+                                    <th class="cell">Phone Num</th>
+                                    <th class="cell">Email</th>
+                                    <th class="cell">Twitter</th>
+                                    <th class="cell">Facebook</th>
+                                    <th class="cell">Curriculum Vitae</th>
+                                    <th class="cell"></th>												
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="cell"> {{ profile.name }} </td>
+                                    <td class="cell"><span class="truncate"> {{ profile.personal_info }} </span></td>
+                                    <td class="cell"> {{ profile.phone }} </td>
+                                    <td class="cell"><span class="badge bg-success"> {{ profile.email }} </span></td>
+                                    <td class="cell"> {{ profile.twitter }} </td>
+                                    <td class="cell"> {{ profile.facebook }} </td>
+                                    <td class="cell"> {{ profile.cv }} </td>
+                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="{% url 'update_profile' profile.id %}">Update</a></td>												
+                                </tr>							
+                            </tbody>
+                        </table>
+                    </div><!--//table-responsive-->
+                </div><!--//app-card-body-->		
+            </div><!--//app-card-->				
+            
+        </div><!--//container-fluid-->
+    </div><!--//app-content-->
+{% endblock %}

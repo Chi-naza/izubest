@@ -1,0 +1,18 @@
+{% extends 'portfolio/dashboard_base.html' %}
+
+
+{% load crispy_forms_tags %} 
+
+
+{% block content %} 
+
+<div class="app-content pt-3 p-md-3 p-lg-4" style="padding: 10px;">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+        <input type="submit" value="Update">
+    </form>
+</div>
+
+{% endblock %}
